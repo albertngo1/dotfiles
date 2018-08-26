@@ -1,0 +1,7 @@
+#!/bin/bash
+
+alias ..='cd ..'
+alias c='code'
+alias c.='code .'
+alias ls='ls -G'
+alias lsa='ls -a'

@@ -10,7 +10,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 # make vim the default text editor
-export EDITOR="vim"
+export EDITOR="vscode"
 
 # shortened prompt that includes git branch info
 RED='\[\e[0;31m\]'

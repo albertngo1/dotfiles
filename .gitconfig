@@ -1,5 +1,5 @@
 [alias]
-	a = add
+	a = add # -p to patch each file added
 	aa = add --all :/
 	alias = config --get-regexp ^alias\\.
 	b = branch

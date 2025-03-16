@@ -105,16 +105,46 @@ alias python=/usr/local/bin/python3.7
 alias pip=pip3
 alias c="open $1 -a \"Cursor\""
 alias v="open $1 -a \"Visual Studio Code\""
-alias ls='ls --color=auto -hv'
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
-alias ip='ip -c=auto'
-PS1='%F{blue}%B%~%b%f %F{green}❯%f '
-HISTFILE=~/.history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt inc_append_history
-bindkey "\e[A" history-beginning-search-backward
-bindkey "\e[B" history-beginning-search-forward
-autoload -U compinit && compinit
-precmd () { print -Pn "\e]2;%-3~\a"; }
+
+# Enable Powerlevel10k prompt if installed (Optional, but recommended)
+# https://github.com/romkatv/powerlevel10k
+if [[ -f ~/.p10k.zsh ]]; then
+    source ~/.p10k.zsh
+fi
+
+# Colorful prompt with Git branch support
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%f'
+
+# Set up the prompt (PS1)
+PS1='%F{blue}%B%~%b%f ${vcs_info_msg_0_} %F{green}❯%f '
+
+# Enable command autosuggestions (if installed)
+if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# Enable syntax highlighting (if installed)
+if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# Improve history search with arrow keys
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# Faster Git status check
+GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM=1
+export GIT_PS1_SHOWCOLORHINTS=1
+
+# Enable auto-completions
+autoload -Uz compinit && compinit
+
+# Improve performance on large Git repos
+export GIT_OPTIONAL_LOCKS=0
+
+# Fix slow prompt in large repositories
+export ZSH_GIT_PROMPT_EXTRA='--no-optional-locks'
+

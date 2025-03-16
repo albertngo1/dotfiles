@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # plugins=(git docker docker-compose)
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting colored-man-pages colorize pip python brew osx)
 
 source $ZSH/oh-my-zsh.sh
 

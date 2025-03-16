@@ -68,7 +68,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+# plugins=(git docker docker-compose)
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,16 +123,6 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%f'
 # Set up the prompt (PS1)
 PS1='%F{blue}%B%~%b%f ${vcs_info_msg_0_} %F{green}❯%f '
 
-# Enable command autosuggestions (if installed)
-if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-# Enable syntax highlighting (if installed)
-if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
 # Improve history search with arrow keys
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -148,3 +141,5 @@ export GIT_OPTIONAL_LOCKS=0
 # Fix slow prompt in large repositories
 export ZSH_GIT_PROMPT_EXTRA='--no-optional-locks'
 
+# Load the configuration
+# source ~/.zshrc
